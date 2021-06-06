@@ -19,4 +19,27 @@ public class ProjectService {
             throw new ProjectIdException("Project ID: " + project.getProjectIdentifier() + " already exists.");
         }
     }
+
+    public Project findProjectByIdentifier(String projectId) {
+
+        Project project = projectRepository.findByProjectIdentifier(projectId);
+
+        if(project == null){
+            throw new ProjectIdException("Project ID: " + projectId + " doesn't exist.");
+        }
+
+        return projectRepository.findByProjectIdentifier(projectId);
+    }
+
+    public Iterable<Project> findAllProject(){
+        return projectRepository.findAll();
+    }
+
+    public void deleteProjectById(String projectId){
+        Project project = projectRepository.findByProjectIdentifier(projectId);
+        if(project == null){
+            throw new ProjectIdException("Cannot delete project with ID " + projectId + " . This project does not exist.");
+        }
+        projectRepository.delete(project);
+    }
 }
