@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Header from './layout/Header'
 import CreateProjectButton from './project/CreateProjectButton';
 import ProjectItem from './project/ProjectItem';
 
