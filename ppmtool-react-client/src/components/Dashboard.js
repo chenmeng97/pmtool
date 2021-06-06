@@ -23,7 +23,7 @@ class Dashboard extends Component {
                             <CreateProjectButton />
                             <br />
                             <hr />
-                            {this.props.projects.projects.map((project) => (
+                            {this.props.projects.map((project) => (
                                 <ProjectItem key={project.id} project={project} />
                             ))}
                         </div>
@@ -40,7 +40,7 @@ Dashboard.propTypes = {
 };
 
 const mapStateToProps = (state) => (
-    {projects: state.project}
+    {projects: state.project.projects}
 )
 
 export default connect(mapStateToProps, {getProjects})(Dashboard);
