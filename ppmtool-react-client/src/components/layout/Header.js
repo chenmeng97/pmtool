@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from "prop-types";
-import { logout, login } from "../../actions/securityActions";
+import { logout } from "../../actions/securityActions";
 
 class Header extends Component {
 

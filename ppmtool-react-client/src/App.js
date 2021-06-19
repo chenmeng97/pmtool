@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Dashboard from './components/Dashboard';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Header from './components/layout/Header';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AddProject from './components/project/AddProject';
 import UpdateProject from './components/project/UpdateProject';
 import {Provider} from "react-redux";
@@ -14,6 +14,7 @@ import Login from './components/userManagement/Login';
 import jwt_decode from 'jwt-decode';
 import { setJWTToken } from "./securityUtils/setJWTToken";
 import { SET_CURRENT_USER } from './actions/types';
+import SecureRoute from './securityUtils/SecureRoute';
 
 // const jwtToken = localStorage.jwtToken;
 // if(jwtToken){
@@ -42,9 +43,11 @@ class App extends Component {
             {
               // Private Routes
             }
-            <Route exact path="/dashboard" component={Dashboard} />
-            <Route exact path="/addProject" component={AddProject} />
-            <Route exact path="/updateProject/:id" component={UpdateProject} />
+            <Switch>
+              <SecureRoute exact path="/dashboard" component={Dashboard} />
+              <SecureRoute exact path="/addProject" component={AddProject} />
+              <SecureRoute exact path="/updateProject/:id" component={UpdateProject} />
+            </Switch>
           </div>
         </Router>
       </Provider>
